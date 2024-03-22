@@ -8,28 +8,6 @@ output_blast='/home/xander/Desktop/Honours/Database/Database_V6/final_blast_resu
 inter_blast_temp='/home/xander/Desktop/Honours/Database/Database_V6/temp_blast.txt'
 non_matching_accessions='/home/xander/Desktop/Honours/Database/Database_V6/non_matching_accession.txt'
 
-#Test sequences
-#fasta_file="/home/xander/Downloads/tn4352.fna"
-#inter_blast="/home/xander/Desktop/Honours/Database/Database_V6/tn4352_interim_blast_results.txt"
-#output_blast='/home/xander/Desktop/Honours/Database/Database_V6/tn4352_final_blast_results.txt'
-
-#fasta_file="/home/xander/Downloads/fuzzy_IS26.fna"
-#inter_blast="/home/xander/Desktop/Honours/Database/Database_V6/fuzzy_IS26_interim_blast_results.txt"
-#output_blast='/home/xander/Desktop/Honours/Database/Database_V6/fuzzy_IS26_final_blast_results.txt'
-
-#fasta_file="/home/xander/Downloads/IS26.fna"
-#inter_blast="/home/xander/Desktop/Honours/Database/Database_V6/IS26_interim_blast_results.txt"
-#output_blast='/home/xander/Desktop/Honours/Database/Database_V6/IS26_final_blast_results.txt'
-
-#fasta_file="/home/xander/Downloads/IS26.fna"
-#inter_blast="/home/xander/Desktop/Honours/Database/Database_V6/IS26_interim_blast_results.txt"
-#output_blast='/home/xander/Desktop/Honours/Database/Database_V6/IS26_final_blast_results.txt'
-
-#output_blast='/home/xander/Desktop/Honours/Database/Database_V6/99identity_final_blast_results.txt'
-#output_blast='/home/xander/Desktop/Honours/Database/Database_V6/non_100_final_blast_results.txt'
-#output_blast='/home/xander/Desktop/Honours/Database/Database_V6/partial_tn1935_blast_results.txt'
-#: <<'END_COMMENT'
-
 # First part of the bash script is to perform BLAST on the FASTA database
 echo "Initiating BLAST"
 blastn_output=$(blastn -query "$fasta_file" -db "$blast_db" -evalue 1e-150 -outfmt '6 std slen' -perc_identity 93)
@@ -41,12 +19,10 @@ echo "First awk command completed"
 # Sort the blast hits by its bit score and coverage, both in a numerical reverse order
 # Then make the output in a tab-delimited format where it is output into a text file
 sort_output=$(echo "$awk_output" | sort -k7,7nr -k8,8nr | sed 's/  */\t/g' > "$inter_blast")
+
 echo "Sorting completed"
-
 echo "Proceeding to force BLAST hits with blast output file"
-#END_COMMENT
 
-#: <<'END_COMMENT'
 #Second part of the bash script is to force match accession numbers between query_id and subject_id
 while read -r field1 field2 rest_of_line;
 do
@@ -79,4 +55,3 @@ done < "$inter_blast"
 rm $inter_blast_temp
 
 echo "Force filtering completed"
-#END_COMMENT
