@@ -1,6 +1,6 @@
 # MGE Genbank Database
 
-This workflow can be used to generate a bacterial Mobile Genetic Element (MGE) database in the Genbank format. 
+This workflow can be used to generate a curated bacterial Mobile Genetic Element (MGE) database with accurate and consistent annotations in the Genbank format. 
 
 ## Dependencies 
 
