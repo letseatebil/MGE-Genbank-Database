@@ -13,12 +13,9 @@ warnings.filterwarnings("ignore")
 # Get current script directory
 script_dir = os.path.dirname(os.path.realpath(__file__))
 blast_output_file = "/home/xander/Desktop/Honours/Database/Database_V6/93_percidentity_final_blast_results.txt"
-#blast_output_file = "/home/xander/Desktop/Honours/Database/Database_V6/fuzzy_IS26_final_blast_results.txt"
-#blast_output_file = "/home/xander/Desktop/Honours/Database/Database_V6/IS26_final_blast_results.txt"
 
 # Assign genbank database to variable
 genbank_database = "/home/xander/Desktop/Honours/Database/Database_V6/Database_V6.gbff"
-#genbank_database = "/home/xander/Desktop/Honours/Database/Database_V6/Final_Genbank_Database_V6.gbff"
 genbank_db_path = os.path.join(script_dir, genbank_database)
 
 # Get today's date so it will output the date the genbank database was generated
