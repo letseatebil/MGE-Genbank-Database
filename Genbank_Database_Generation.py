@@ -13,29 +13,15 @@ warnings.filterwarnings("ignore")
 # Get current script directory
 script_dir = os.path.dirname(os.path.realpath(__file__))
 blast_output_file = "/home/xander/Desktop/Honours/Database/Database_V6/93_percidentity_final_blast_results.txt"
-#blast_output_file = "/home/xander/Desktop/Honours/Database/Database_V6/fuzzy_IS26_final_blast_results.txt"
-#blast_output_file = "/home/xander/Desktop/Honours/Database/Database_V6/IS26_final_blast_results.txt"
+
 
 # Assign genbank database to variable
 genbank_database = "/home/xander/Desktop/Honours/Database/Database_V6/Database_V6.gbff"
-#genbank_database = "/home/xander/Desktop/Honours/Database/Database_V6/Final_Genbank_Database_V6.gbff"
 genbank_db_path = os.path.join(script_dir, genbank_database)
 
 # Get today's date so it will output the date the genbank database was generated
 today = date.today()
 date4 = today.strftime('%d-%b-%Y').upper()
-
-#blast_output_file = "/home/xander/Desktop/Honours/Database/Database_V6/iskpn6_final_blast_results.txt"
-#script_output = "/home/xander/Desktop/Honours/Database/Database_V6/iskpn6.gbff"
-
-#script_output = "/home/xander/Desktop/Honours/Database/Database_V6/fuzzy_IS26.gbff"
-#script_output = "/home/xander/Desktop/Honours/Database/Database_V6/Tn1935_partial.gbff"
-#script_output = "/home/xander/Desktop/Honours/Database/Database_V6/Final_Tn4401a.gbff"
-#script_output = "/home/xander/Desktop/Honours/Database/Database_V6/IS26.gbff"
-
-script_output = "/home/xander/Desktop/Honours/Database/Database_V6/Final_Genbank_Database_V6.gbff"
-
-#script_output = "/home/xander/Desktop/Honours/Database/Database_V6/IS26.gbff"
 
 def extract_sequences():
     # Create a dictionary to store subject positions and query_id for each accession
@@ -139,31 +125,7 @@ def extract_sequences():
                     #Check for presence of /note or /label keys in qualifiers dictionary 
                     note_value = feature.qualifiers.get('note', [''])[0] if 'note' in feature.qualifiers else ''
                     label_value = feature.qualifiers.get('label', [''])[0] if 'label' in feature.qualifiers else ''
-                    
-                    #Filtering feature type for internal elements
-                    #desired_feature_types = ['mobile_element', 'repeat_region', 'CDS', 'misc_feature']
 
-                    #----------------------------------------------------------------------------------------------------------
-                    #Checking for internal elements and annotating it as such
-                    #Identify criteria for internal elements (case insensitive)
-                    '''is_internal_element = element_name[0].casefold() not in note_value or element_name[0].casefold() not in label_value
-                    
-                    if is_internal_element and feature.type in desired_feature_types:
-                            
-                        internal_element_tag = 'Internal element = yes'
-
-                        # Check if "Internal element = yes" is already present in note_value 
-                        if internal_element_tag not in note_value:
-
-                            # Add a custom qualifier to indicate an internal element
-                            #print(element_name[0].casefold())
-                            feature.qualifiers['note'] = [f'{note_value}; {internal_element_tag}']
-                        else:
-
-                            # If it's not an internal element, remove any existing "Internal element = yes" from the note
-                            if 'Internal element = yes' in note_value:
-                                feature.qualifiers['note'] = [note_value.replace('Internal element = yes', '').strip()]
-                    '''
                     #Filtering annotations based on start and end position
                     #----------------------------------------------------------------------------------------------------------
                     if (
