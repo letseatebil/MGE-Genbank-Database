@@ -25,17 +25,7 @@ genbank_db_path = os.path.join(script_dir, genbank_database)
 today = date.today()
 date4 = today.strftime('%d-%b-%Y').upper()
 
-#blast_output_file = "/home/xander/Desktop/Honours/Database/Database_V6/iskpn6_final_blast_results.txt"
-#script_output = "/home/xander/Desktop/Honours/Database/Database_V6/iskpn6.gbff"
-
-#script_output = "/home/xander/Desktop/Honours/Database/Database_V6/fuzzy_IS26.gbff"
-#script_output = "/home/xander/Desktop/Honours/Database/Database_V6/Tn1935_partial.gbff"
-#script_output = "/home/xander/Desktop/Honours/Database/Database_V6/Final_Tn4401a.gbff"
-#script_output = "/home/xander/Desktop/Honours/Database/Database_V6/IS26.gbff"
-
 script_output = "/home/xander/Desktop/Honours/Database/Database_V6/Final_Genbank_Database_V6.gbff"
-
-#script_output = "/home/xander/Desktop/Honours/Database/Database_V6/IS26.gbff"
 
 def extract_sequences():
     # Create a dictionary to store subject positions and query_id for each accession
